@@ -9,8 +9,9 @@ import millify from 'millify';
 
 import DefaultImage from '../assets/images/house.jpg';
 
-const Property = ({ property: { coverPhoto, price, rentFrequency, rooms, title, baths, area, agency, isVerified, externalId  } }) => (
-  <Link href={`/property/${externalId}`} passHref>
+const Property = ({ property: { coverPhoto, price, rentFrequency, rooms, title, baths, area, agency, isVerified, externalID  } }) => (
+  
+  <Link href={`/property/${externalID}`} passHref>
     <Flex flexWrap='wrap' w='420px' p='5' paddingTop='0px' justifyContent='flex-start' cursor='pointer' >
       <Box>
         <Image src={coverPhoto ? coverPhoto.url : DefaultImage} width={400} height={260} alt='house' />
@@ -29,10 +30,10 @@ const Property = ({ property: { coverPhoto, price, rentFrequency, rooms, title, 
           {rooms}<FaBed /> | {baths} <FaBath /> | {millify(area)} sqft <BsGridFill />
         </Flex>
         <Box marginTop="2">
-        <Text fontSize='lg' marginBottom="2" fontWeight="bold">
-          {title.length > 30 ? `${title.substring(0, 30)} ...` : title}
-        </Text>
-      </Box>
+          <Text fontSize='lg' marginBottom="2" fontWeight="bold">
+            {title && title.length > 30 ? `${title.substring(0, 30)} ...` : title}
+          </Text>
+        </Box>
       </Box>
     </Flex>
   </Link>
